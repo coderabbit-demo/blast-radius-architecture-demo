@@ -38,6 +38,9 @@ importers:
       '@ledgerly/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@ledgerly/fx':
+        specifier: workspace:*
+        version: link:../../packages/fx
       '@ledgerly/money':
         specifier: workspace:*
         version: link:../../packages/money
@@ -68,6 +71,9 @@ importers:
       '@ledgerly/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
+      '@ledgerly/fx':
+        specifier: workspace:*
+        version: link:../../packages/fx
       '@ledgerly/money':
         specifier: workspace:*
         version: link:../../packages/money
@@ -101,9 +107,21 @@ importers:
 
   packages/db:
     dependencies:
+      '@ledgerly/money':
+        specifier: workspace:*
+        version: link:../money
       pg:
         specifier: ^8.13.1
         version: 8.23.0
+
+  packages/fx:
+    dependencies:
+      '@ledgerly/money':
+        specifier: workspace:*
+        version: link:../money
+      ioredis:
+        specifier: ^5.4.1
+        version: 5.11.1
 
   packages/money: {}
 

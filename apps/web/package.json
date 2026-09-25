@@ -5,6 +5,15 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "scripts": { "build": "tsc -p .", "typecheck": "tsc -p . --noEmit" },
-  "dependencies": { "react": "^18.3.1", "react-dom": "^18.3.1", "@ledgerly/money": "workspace:*", "@ledgerly/contracts": "workspace:*" }
+  "scripts": {
+    "build": "tsc -p .",
+    "typecheck": "tsc -p . --noEmit"
+  },
+  "dependencies": {
+    "@ledgerly/contracts": "workspace:*",
+    "@ledgerly/fx": "workspace:*",
+    "@ledgerly/money": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
 }

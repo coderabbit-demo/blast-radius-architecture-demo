@@ -1,9 +1,12 @@
+import type { CurrencyCode } from "@ledgerly/money"
 import { query } from "./client.js"
 
 export interface OrderRow {
   id: string
   customerId: string
   status: "pending" | "paid" | "refunded" | "failed"
+  currency: CurrencyCode
+  fxRate: number
   subtotalCents: number
   taxCents: number
   totalCents: number
@@ -15,6 +18,8 @@ const SELECT_ORDER = `
   SELECT id,
          customer_id           AS "customerId",
          status,
+         currency,
+         fx_rate::float8       AS "fxRate",
          subtotal_cents        AS "subtotalCents",
          tax_cents             AS "taxCents",
          total_cents           AS "totalCents",
@@ -24,9 +29,9 @@ const SELECT_ORDER = `
 
 export async function insertOrder(order: Omit<OrderRow, "status" | "createdAt" | "stripePaymentIntent">): Promise<void> {
   await query(
-    `INSERT INTO orders (id, customer_id, subtotal_cents, tax_cents, total_cents)
-     VALUES ($1, $2, $3, $4, $5)`,
-    [order.id, order.customerId, order.subtotalCents, order.taxCents, order.totalCents],
+    `INSERT INTO orders (id, customer_id, currency, fx_rate, subtotal_cents, tax_cents, total_cents)
+     VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+    [order.id, order.customerId, order.currency, order.fxRate, order.subtotalCents, order.taxCents, order.totalCents],
   )
 }
 

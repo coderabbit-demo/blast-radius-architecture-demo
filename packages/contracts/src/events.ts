@@ -1,4 +1,4 @@
-import type { Cents } from "@ledgerly/money"
+import type { Cents, CurrencyCode } from "@ledgerly/money"
 
 /**
  * Domain events published on the Redis event bus.
@@ -18,6 +18,11 @@ export interface OrderPlacedEvent {
   type: "order.placed"
   orderId: string
   customerId: string
+  /** Currency the customer is charged in. All `*Cents` amounts below are minor units of this currency. */
+  currency: CurrencyCode
+  /** USD -> `currency` rate locked in at checkout. */
+  fxRate: number
+  /** Catalog prices; `unitPriceCents` is always USD cents. */
   lineItems: LineItem[]
   subtotalCents: Cents
   taxCents: Cents
