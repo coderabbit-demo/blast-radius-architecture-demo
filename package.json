@@ -1,0 +1,22 @@
+{
+  "name": "ledgerly",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Ledgerly \u2014 order, billing and settlement platform (CodeRabbit blast radius / architecture impact demo)",
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "dev:api": "pnpm --filter @ledgerly/api dev",
+    "dev:worker": "pnpm --filter @ledgerly/worker dev"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "tsx": "^4.19.2",
+    "@types/node": "^22.9.0",
+    "@types/pg": "^8.11.10",
+    "@types/express": "^4.17.21",
+    "@types/react": "^18.3.12",
+    "@types/node-cron": "^3.0.11"
+  },
+  "packageManager": "pnpm@9.12.3"
+}

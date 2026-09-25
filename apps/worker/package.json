@@ -1,0 +1,10 @@
+{
+  "name": "@ledgerly/worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": { "build": "tsc -p .", "typecheck": "tsc -p . --noEmit", "dev": "tsx watch src/index.ts" },
+  "dependencies": { "@ledgerly/money": "workspace:*", "@ledgerly/contracts": "workspace:*", "@ledgerly/db": "workspace:*", "@ledgerly/queue": "workspace:*" }
+}

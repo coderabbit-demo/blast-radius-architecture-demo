@@ -1,0 +1,10 @@
+{
+  "name": "@ledgerly/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": { "build": "tsc -p .", "typecheck": "tsc -p . --noEmit" },
+  "dependencies": { "react": "^18.3.1", "react-dom": "^18.3.1", "@ledgerly/money": "workspace:*", "@ledgerly/contracts": "workspace:*" }
+}
