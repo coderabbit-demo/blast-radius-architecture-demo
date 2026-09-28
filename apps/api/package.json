@@ -5,6 +5,18 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "scripts": { "build": "tsc -p .", "typecheck": "tsc -p . --noEmit", "dev": "tsx watch src/server.ts" },
-  "dependencies": { "express": "^4.21.1", "stripe": "^17.3.1", "@ledgerly/money": "workspace:*", "@ledgerly/contracts": "workspace:*", "@ledgerly/db": "workspace:*", "@ledgerly/queue": "workspace:*" }
+  "scripts": {
+    "build": "tsc -p .",
+    "typecheck": "tsc -p . --noEmit",
+    "dev": "tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@ledgerly/contracts": "workspace:*",
+    "@ledgerly/db": "workspace:*",
+    "@ledgerly/fx": "workspace:*",
+    "@ledgerly/money": "workspace:*",
+    "@ledgerly/queue": "workspace:*",
+    "express": "^4.21.1",
+    "stripe": "^17.3.1"
+  }
 }

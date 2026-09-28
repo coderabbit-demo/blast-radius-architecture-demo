@@ -1,30 +1,32 @@
-import { formatUsd } from "@ledgerly/money"
+import { formatMoney, type CurrencyCode } from "@ledgerly/money"
 import type { LineItem } from "@ledgerly/contracts"
 
 export interface OrderSummaryProps {
   lineItems: LineItem[]
+  currency: CurrencyCode
+  fxRate: number
   subtotalCents: number
   taxCents: number
   totalCents: number
 }
 
-export function OrderSummary({ lineItems, subtotalCents, taxCents, totalCents }: OrderSummaryProps) {
+export function OrderSummary({ lineItems, currency, fxRate, subtotalCents, taxCents, totalCents }: OrderSummaryProps) {
   return (
     <section aria-label="Order summary">
       <ul>
         {lineItems.map(item => (
           <li key={item.sku}>
-            {item.sku} × {item.quantity} — {formatUsd(item.unitPriceCents * item.quantity)}
+            {item.sku} × {item.quantity} — {formatMoney(Math.round(item.unitPriceCents * item.quantity * fxRate), currency)}
           </li>
         ))}
       </ul>
       <dl>
         <dt>Subtotal</dt>
-        <dd>{formatUsd(subtotalCents)}</dd>
+        <dd>{formatMoney(subtotalCents, currency)}</dd>
         <dt>Tax</dt>
-        <dd>{formatUsd(taxCents)}</dd>
+        <dd>{formatMoney(taxCents, currency)}</dd>
         <dt>Total</dt>
-        <dd><strong>{formatUsd(totalCents)}</strong></dd>
+        <dd><strong>{formatMoney(totalCents, currency)}</strong></dd>
       </dl>
     </section>
   )
